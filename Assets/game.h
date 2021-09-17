@@ -8,7 +8,7 @@ class game
      game() {}
      ~game() {}
 
-   bool init(const char* title, int xpos, int ypos, int height, int width, int flags);
+   bool init();
    void render();
    void update();
    bool running();
@@ -16,14 +16,6 @@ class game
    void clean();
 
    private:
-     SDL_Texture* m_pTexture;
-     SDL_Texture* m_pTexture1;
-
-     SDL_Rect m_sourceRectangle;
-     SDL_Rect m_destinationRectangle;
-     SDL_Rect m_sourceRectangle1;
-     SDL_Rect m_destinationRectangle1;
-
      SDL_Window* m_pWindow;
      SDL_Renderer* m_pRenderer;
      bool m_bRunning;

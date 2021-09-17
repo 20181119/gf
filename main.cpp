@@ -4,7 +4,7 @@ game* g_game=0;
 int main(int argc, char* args[])
 {
   g_game=new game();
-  g_game->init("Game framework",100,100,600,480,0);
+  g_game->init("game framework",100,100,600,480,0);
   while(g_game->running())
   {
     g_game->handleEvents();
