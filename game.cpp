@@ -1,4 +1,5 @@
 #include "game.h"
+#include "SDL_image.h"
 
 bool game::init(const char* title, int xpos, int ypos, int height, int width, int flags)
 {
@@ -30,7 +31,7 @@ bool game::init(const char* title, int xpos, int ypos, int height, int width, in
     return false;
   }
 
-  SDL_Surface* pTempSurface=SDL_LoadBMP("Assets/배경연습1.bmp");
+  SDL_Surface* pTempSurface=SDL_LoadBMP("Assets/배경연습1.bmp");//배경이미지
   m_pTexture=SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
   SDL_FreeSurface(pTempSurface);
 
@@ -45,17 +46,18 @@ bool game::init(const char* title, int xpos, int ypos, int height, int width, in
   
 
 
-  SDL_Surface* pTempSurface1=SDL_LoadBMP("Assets/고양이어폰.bmp");
-  m_pTexture1=SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface1);
+  SDL_Surface* pTempSurface1=IMG_Load("Assets/sonic-alpha.png");//캐릭터이미지
+  sonic=SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface1);
   SDL_FreeSurface(pTempSurface1);
 
-  SDL_QueryTexture(m_pTexture1, NULL,NULL,&m_sourceRectangle1.w,&m_sourceRectangle1.h);
+  m_sourceRectangle1.w=65;
+  m_sourceRectangle1.h=65;
 
-  m_destinationRectangle1.w=100;
-  m_destinationRectangle1.h=100;
+  m_destinationRectangle1.w=m_sourceRectangle1.w;
+  m_destinationRectangle1.h=m_sourceRectangle1.h;
 
   m_destinationRectangle1.x=m_sourceRectangle1.x=0;
-  m_destinationRectangle1.y=m_sourceRectangle1.y=100;
+  m_destinationRectangle1.y=m_sourceRectangle1.y=0;
   
 
   m_bRunning=true;
@@ -65,16 +67,16 @@ bool game::init(const char* title, int xpos, int ypos, int height, int width, in
 void game::render()
 {
   SDL_RenderClear(m_pRenderer);
-  SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
-  SDL_RenderCopy(m_pRenderer, m_pTexture1, &m_sourceRectangle1, &m_destinationRectangle1);
+  SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);//배경이미지띄움
+  SDL_RenderCopy(m_pRenderer, sonic, &m_sourceRectangle1, &m_destinationRectangle1);//캐릭터이미지띄움
   
-  SDL_DestroyTexture(m_pTexture1);
+  //SDL_DestroyTexture(m_pTexture1);//캐릭터이미지 지움
   SDL_RenderPresent(m_pRenderer);
 }
 
 void game::update()
 {
-  
+  m_sourceRectangle1.x=65*((SDL_GetTicks()/150)%8);
 }
 
 bool game::running()

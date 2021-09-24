@@ -17,7 +17,7 @@ class game
 
    private:
      SDL_Texture* m_pTexture;
-     SDL_Texture* m_pTexture1;
+     SDL_Texture* sonic;
 
      SDL_Rect m_sourceRectangle;
      SDL_Rect m_destinationRectangle;
