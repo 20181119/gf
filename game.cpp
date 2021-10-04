@@ -46,8 +46,10 @@ void game::update()
 
 void game::render()
 {
+  SDL_RenderClear(m_pRenderer);
   m_texturemanager.draw("sonic_run",0, 0, 65, 65, m_pRenderer);
   m_texturemanager.drawframe("sonic_run",100, 100, 65, 65, 0,m_currentframe, m_pRenderer);
+  SDL_RenderPresent(m_pRenderer);
 }
 
 bool game::running()

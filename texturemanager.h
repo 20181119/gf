@@ -5,6 +5,32 @@
 #include <string>
 using namespace std;
 
+
+/*
+class singleton
+{
+  private:
+      singleton() {}
+      static singleton* instance;
+
+   public:
+   static singleton  Getinstance()
+   {
+      if(instance==NULL)
+       {
+          instance= new singleton();
+          return instance;
+       }
+   }
+};
+singleton* singleton::instance=NULL;
+
+
+
+
+
+*/
+
 class texturemanager
 {
    public:
