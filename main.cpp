@@ -1,4 +1,5 @@
 #include "game.h"
+#include "texturemanager.h"
 game* g_game=0;
 
 int main(int argc, char* args[])
