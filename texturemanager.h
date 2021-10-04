@@ -11,19 +11,18 @@ class singleton
 {
   private:
       singleton() {}
-      static singleton* instance;
-
+      
    public:
-   static singleton  Getinstance()
+   static texturemanager instance()
    {
-      if(instance==NULL)
+      if(s_pinstance==0)
        {
-          instance= new singleton();
-          return instance;
+          s_pinstance= new texturemanager();
+          return s_pinstance;
        }
    }
 };
-singleton* singleton::instance=NULL;
+
 
 
 
@@ -33,16 +32,33 @@ singleton* singleton::instance=NULL;
 
 class texturemanager
 {
+   private:
+     texturemanager() {}
+     static texturemanager* s_pinstance;
+
    public:
-    texturemanager() {}
+    
     ~texturemanager() {}
 
-    bool load(string filename, string id, SDL_Renderer* pRenderer);
+    static texturemanager* instance()
+   {
+      if(s_pinstance==0)
+       {
+          s_pinstance= new texturemanager();
+          
+       }
+       return s_pinstance;
+   }
 
-    void draw(string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip=SDL_FLIP_NONE);
+    bool load(string filename, string id, SDL_Renderer* pRenderer);
+    bool landscapeload(string filename, string id, SDL_Renderer* pRenderer);
+
+    void landscapedraw(string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip=SDL_FLIP_NONE);
+
 
     void drawframe(string id, int x, int y, int width, int height, int currentrow, int currentframe, SDL_Renderer* pRenderer, SDL_RendererFlip flip=SDL_FLIP_NONE);
   private:
     map<string, SDL_Texture*> m_Texturemap;
+    map<string, SDL_Texture*> m_landscapeTexturemap;
 };
 #endif

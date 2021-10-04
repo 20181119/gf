@@ -1,6 +1,7 @@
 #include "texturemanager.h"
 #include "SDL_image.h"
 
+texturemanager* texturemanager::s_pinstance=0;
 
 
 bool texturemanager::load(string filename, string id, SDL_Renderer* pRenderer)
@@ -21,7 +22,33 @@ bool texturemanager::load(string filename, string id, SDL_Renderer* pRenderer)
   return false;
 }
 
-void texturemanager::draw(string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip)
+ bool texturemanager::landscapeload(string filename, string id, SDL_Renderer* pRenderer)
+
+{
+  SDL_Surface* pTempSurface=IMG_Load(filename.c_str());
+  if(pTempSurface==0)
+  {
+    return false;
+  }
+  
+  SDL_Texture* pTexture=SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
+  SDL_FreeSurface(pTempSurface);
+  if(pTexture!=0)
+  {
+    m_landscapeTexturemap[id]=pTexture;
+    return true;
+  }
+  return false;
+}
+
+
+
+
+
+
+
+
+void texturemanager::landscapedraw(string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip)
 {
   SDL_Rect srcRect;
   SDL_Rect desRect;
@@ -34,7 +61,7 @@ void texturemanager::draw(string id, int x, int y, int width, int height, SDL_Re
   desRect.x=x;
   desRect.y=y;
 
-  SDL_RenderCopyEx(pRenderer, m_Texturemap[id], &srcRect, &desRect, 0, 0, flip);
+  SDL_RenderCopyEx(pRenderer, m_landscapeTexturemap[id], &srcRect, &desRect, 0, 0, flip);
 }
 
 void texturemanager::drawframe(string id, int x, int y, int width, int height, int currentrow, int currentframe, SDL_Renderer* pRenderer, SDL_RendererFlip flip)

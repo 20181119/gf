@@ -33,7 +33,16 @@ bool game::init(const char* title, int xpos, int ypos, int height, int width, in
     return false;
   }
 
- m_texturemanager.load("Assets/sonic.png","sonic_run",m_pRenderer);
+ if(!texturemanager::instance()->load("Assets/sonic.png","sonic_run",m_pRenderer))
+  {
+    return false;
+  }
+
+  if(!texturemanager::instance()->landscapeload("Assets/배경연습1.png","landscape",m_pRenderer))
+  {
+    return false;
+  }
+
 
   m_bRunning=true;
   return true;
@@ -47,8 +56,8 @@ void game::update()
 void game::render()
 {
   SDL_RenderClear(m_pRenderer);
-  m_texturemanager.draw("sonic_run",0, 0, 65, 65, m_pRenderer);
-  m_texturemanager.drawframe("sonic_run",100, 100, 65, 65, 0,m_currentframe, m_pRenderer);
+  texturemanager::instance()->landscapedraw("landscape",0, 0, 640, 640, m_pRenderer);
+  texturemanager::instance()->drawframe("sonic_run",100, 100, 65, 65, 0,m_currentframe, m_pRenderer);
   SDL_RenderPresent(m_pRenderer);
 }
 

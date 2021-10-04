@@ -10,7 +10,7 @@ class game
      game() {}
      ~game() {}
 
-     texturemanager m_texturemanager;
+     
      int m_currentframe;
 
    bool init(const char* title, int xpos, int ypos, int height, int width, int flags);
