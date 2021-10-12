@@ -40,6 +40,9 @@ class texturemanager
     
     ~texturemanager() {}
 
+    
+
+
     static texturemanager* instance()
    {
       if(s_pinstance==0)
@@ -50,10 +53,11 @@ class texturemanager
        return s_pinstance;
    }
 
-    bool load(string filename, string id, SDL_Renderer* pRenderer);
-    bool landscapeload(string filename, string id, SDL_Renderer* pRenderer);
+   
+    bool load(string filename, string id, SDL_Renderer* pRenderer);//캐릭터이미지생성
+    bool landscapeload(string filename, string id, SDL_Renderer* pRenderer);//배경이미지생성
 
-    void landscapedraw(string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip=SDL_FLIP_NONE);
+    void landscapedraw(string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip=SDL_FLIP_NONE);//배경이미지드로우
 
 
     void drawframe(string id, int x, int y, int width, int height, int currentrow, int currentframe, SDL_Renderer* pRenderer, SDL_RendererFlip flip=SDL_FLIP_NONE);

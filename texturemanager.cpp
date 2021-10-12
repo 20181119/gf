@@ -20,7 +20,7 @@ bool texturemanager::load(string filename, string id, SDL_Renderer* pRenderer)
     return true;
   }
   return false;
-}
+}//캐릭터이미지생성
 
  bool texturemanager::landscapeload(string filename, string id, SDL_Renderer* pRenderer)
 
@@ -39,7 +39,7 @@ bool texturemanager::load(string filename, string id, SDL_Renderer* pRenderer)
     return true;
   }
   return false;
-}
+}//배경이미지생성
 
 
 
@@ -62,7 +62,7 @@ void texturemanager::landscapedraw(string id, int x, int y, int width, int heigh
   desRect.y=y;
 
   SDL_RenderCopyEx(pRenderer, m_landscapeTexturemap[id], &srcRect, &desRect, 0, 0, flip);
-}
+}//배경이미지드로우
 
 void texturemanager::drawframe(string id, int x, int y, int width, int height, int currentrow, int currentframe, SDL_Renderer* pRenderer, SDL_RendererFlip flip)
 {
@@ -76,5 +76,8 @@ void texturemanager::drawframe(string id, int x, int y, int width, int height, i
   desRect.x=x;
   desRect.y=y;
 
-  SDL_RenderCopyEx(pRenderer, m_Texturemap[id], &srcRect, &desRect, 0, 0, flip);
-}
+  int r=0;
+  
+  SDL_RenderCopyEx(pRenderer, m_Texturemap[id], &srcRect, &desRect, r, 0, flip);
+
+}//캐릭터애니메이션이미지드로우

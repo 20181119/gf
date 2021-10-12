@@ -2,6 +2,11 @@
 #include "SDL_image.h"
 #include "texturemanager.h"
 
+float alienX=0;
+float alienY=100;
+
+
+
 
 bool game::init(const char* title, int xpos, int ypos, int height, int width, int flags)
 {
@@ -33,12 +38,12 @@ bool game::init(const char* title, int xpos, int ypos, int height, int width, in
     return false;
   }
 
- if(!texturemanager::instance()->load("Assets/sonic.png","sonic_run",m_pRenderer))
+ if(!texturemanager::instance()->load("Assets/New Piskel.png","alien_run",m_pRenderer))//캐릭터이미지아이디설정
   {
     return false;
   }
 
-  if(!texturemanager::instance()->landscapeload("Assets/배경연습1.png","landscape",m_pRenderer))
+  if(!texturemanager::instance()->landscapeload("Assets/배경연습1111.png","landscape",m_pRenderer))//배경이미지아이디설정
   {
     return false;
   }
@@ -51,13 +56,20 @@ bool game::init(const char* title, int xpos, int ypos, int height, int width, in
 void game::update()
 {
   m_currentframe=((SDL_GetTicks()/100) % 8);
+
+     alienX+=0.5;
+  if(alienX==540)
+    
+  
 }
 
 void game::render()
 {
   SDL_RenderClear(m_pRenderer);
-  texturemanager::instance()->landscapedraw("landscape",0, 0, 640, 640, m_pRenderer);
-  texturemanager::instance()->drawframe("sonic_run",100, 100, 65, 65, 0,m_currentframe, m_pRenderer);
+  texturemanager::instance()->landscapedraw("landscape",0, 0, 640, 640, m_pRenderer);//배경이미지표시
+  texturemanager::instance()->drawframe("alien_run",alienX, alienY, 128, 128, 0,m_currentframe, m_pRenderer);//캐릭터애니메이션이미지표시
+  
+ 
   SDL_RenderPresent(m_pRenderer);
 }
 
