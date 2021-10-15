@@ -22,6 +22,8 @@ bool texturemanager::load(string filename, string id, SDL_Renderer* pRenderer)
   return false;
 }//캐릭터이미지생성
 
+
+
  bool texturemanager::landscapeload(string filename, string id, SDL_Renderer* pRenderer)
 
 {

@@ -56,11 +56,6 @@ bool game::init(const char* title, int xpos, int ypos, int height, int width, in
 void game::update()
 {
   m_currentframe=((SDL_GetTicks()/100) % 8);
-
-     alienX+=0.5;
-  if(alienX==540)
-    
-  
 }
 
 void game::render()

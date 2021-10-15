@@ -22,12 +22,6 @@ class singleton
        }
    }
 };
-
-
-
-
-
-
 */
 
 class texturemanager
