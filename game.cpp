@@ -1,9 +1,8 @@
 #include "game.h"
 #include "SDL_image.h"
 #include "texturemanager.h"
-
-float alienX=0;
-float alienY=100;
+#include "gameobject.h"
+#include "player.h"
 
 
 
@@ -43,10 +42,8 @@ bool game::init(const char* title, int xpos, int ypos, int height, int width, in
     return false;
   }
 
-  if(!texturemanager::instance()->landscapeload("Assets/배경연습1111.png","landscape",m_pRenderer))//배경이미지아이디설정
-  {
-    return false;
-  }
+  m_go.load(100,100,128,128,"alien_run");
+  m_p.load(300,300,128,128,"alien_run");
 
 
   m_bRunning=true;
@@ -55,16 +52,17 @@ bool game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 void game::update()
 {
-  m_currentframe=((SDL_GetTicks()/100) % 8);
+  m_go.update();
+  m_p.update();
 }
 
 void game::render()
 {
-  SDL_RenderClear(m_pRenderer);
-  texturemanager::instance()->landscapedraw("landscape",0, 0, 640, 640, m_pRenderer);//배경이미지표시
-  texturemanager::instance()->drawframe("alien_run",alienX, alienY, 128, 128, 0,m_currentframe, m_pRenderer);//캐릭터애니메이션이미지표시
-  
- 
+  SDL_RenderClear(m_pRenderer);  // 김현도 실습조교에게 문의해봐다오. 나는 이제 회의가 있어서... lms에서 메시지 보내기로.. 
+// 이전에 그리는 코드는 다 삭제 했니? 
+//텍스쳐메니저헤더에 싱글톤 구현되어있습니다
+  m_go.draw(m_pRenderer);
+  m_p.draw(m_pRenderer);
   SDL_RenderPresent(m_pRenderer);
 }
 

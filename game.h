@@ -2,7 +2,8 @@
 #define _game_
 #include "SDL.h"
 #include "texturemanager.h"
-
+#include "gameobject.h"
+#include "player.h"
 
 class game
 {
@@ -11,15 +12,18 @@ class game
      ~game() {}
 
      
-     int m_currentframe;
+     
 
    bool init(const char* title, int xpos, int ypos, int height, int width, int flags);
    void render();
-   void update();
+   
    bool running();
    void handleEvents();
+   void update();
    void clean();
-
+  
+  gameobject m_go;
+  player m_p;
   
 
    private:

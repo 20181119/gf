@@ -49,14 +49,9 @@ class texturemanager
 
    
     bool load(string filename, string id, SDL_Renderer* pRenderer);//캐릭터이미지생성
-    bool landscapeload(string filename, string id, SDL_Renderer* pRenderer);//배경이미지생성
-
-    void landscapedraw(string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip=SDL_FLIP_NONE);//배경이미지드로우
-
 
     void drawframe(string id, int x, int y, int width, int height, int currentrow, int currentframe, SDL_Renderer* pRenderer, SDL_RendererFlip flip=SDL_FLIP_NONE);
   private:
     map<string, SDL_Texture*> m_Texturemap;
-    map<string, SDL_Texture*> m_landscapeTexturemap;
 };
 #endif
