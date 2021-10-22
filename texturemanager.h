@@ -5,25 +5,6 @@
 #include <string>
 using namespace std;
 
-
-/*
-class singleton
-{
-  private:
-      singleton() {}
-      
-   public:
-   static texturemanager instance()
-   {
-      if(s_pinstance==0)
-       {
-          s_pinstance= new texturemanager();
-          return s_pinstance;
-       }
-   }
-};
-*/
-
 class texturemanager
 {
    private:
@@ -31,9 +12,9 @@ class texturemanager
      static texturemanager* s_pinstance;
 
    public:
+
     
     ~texturemanager() {}
-
     
 
 

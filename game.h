@@ -4,7 +4,6 @@
 #include "texturemanager.h"
 #include "gameobject.h"
 #include "player.h"
-#include <vector>
 
 class game
 {
@@ -17,14 +16,14 @@ class game
 
    bool init(const char* title, int xpos, int ypos, int height, int width, int flags);
    void render();
-   
    bool running();
    void handleEvents();
    void update();
    void clean();
-
-   std::vector<gameobject*>m_gameoj;
-
+  
+  gameobject m_go;
+  player m_p;
+  
 
    private:
      SDL_Window* m_pWindow;
