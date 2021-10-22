@@ -36,8 +36,8 @@ void texturemanager::drawframe(string id, int x, int y, int width, int height, i
   desRect.x=x;
   desRect.y=y;
 
-  int r=0;
+
   
-  SDL_RenderCopyEx(pRenderer, m_Texturemap[id], &srcRect, &desRect, r, 0, flip);
+  SDL_RenderCopyEx(pRenderer, m_Texturemap[id], &srcRect, &desRect, 0, 0, flip);
 
 }//캐릭터애니메이션이미지드로우

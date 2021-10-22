@@ -5,7 +5,7 @@ using namespace std;
 class loadParams
 {
   public:
-    loadparams(int x, int y, int width, int height, string textureID)
+    loadParams(int x, int y, int width, int height, string textureID):
     
        m_x(x), 
        m_y(y), 
@@ -24,4 +24,4 @@ class loadParams
      int m_width;
      int m_height;
      string m_textureID;
-}
+};

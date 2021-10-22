@@ -19,9 +19,13 @@ class game
      static game* getinstance()
      {
        if(instance==0)
-       instance=new game();
+       {
+          instance=new game();
+          return instance;
+       }
        return instance;
      }
+     SDL_Renderer* getRenderer() const{return m_pRenderer;}
      
 
    bool init(const char* title, int xpos, int ypos, int height, int width, int flags);
@@ -30,9 +34,6 @@ class game
    void handleEvents();
    void update();
    void clean();
-  
-  gameobject m_go;
-  player m_p;
   
 
    private:

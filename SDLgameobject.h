@@ -16,8 +16,8 @@ class SDLgameobject:public gameobject
     int m_y;
     int m_width;
     int m_height;
-    int m_curretrow;
+    int m_currentrow;
     int m_currentframe;
     string m_textureID;
 
-}
+};

@@ -1,18 +1,27 @@
 #include "game.h"
 #include "texturemanager.h"
+#include <iostream>
 game* g_game=0;
 
 int main(int argc, char* args[])
 {
-  g_game=new game();
-  g_game->init("game framework",100,100,600,480,0);
-  while(g_game->running())
+ if(game::getinstance()->init("game framework",100,100,600,480,0))
+ {
+  while(game::getinstance()->running())
   {
-    g_game->handleEvents();
-    g_game->update();
-    g_game->render();
+    game::getinstance()->handleEvents();
+    game::getinstance()->update();
+    game::getinstance()->render();
     SDL_Delay(10);
   }
-  g_game->clean();
+
+ }
+ else
+
+ {
+   std::cout<<"game init failure"<<SDL_GetError()<<endl;
+   return -1;
+ }
+  game::getinstance()->clean();
   return 0;
 }

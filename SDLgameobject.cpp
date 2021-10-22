@@ -1,6 +1,7 @@
 #include "SDLgameobject.h"
 #include "loadParams.h"
 #include "texturemanager.h"
+#include "game.h"
 
 SDLgameobject::SDLgameobject(const loadParams*  pParams):gameobject(pParams)
 {
@@ -16,6 +17,6 @@ SDLgameobject::SDLgameobject(const loadParams*  pParams):gameobject(pParams)
 }
 void SDLgameobject::draw()
 {
-   texturemanager::instance->drawframe(m_textureID, m_x, m_y, m_width, m_height, m_currentrow, m_currentframe, )
+   texturemanager::instance()->drawframe(m_textureID, m_x, m_y, m_width, m_height, m_currentrow, m_currentframe, game::getinstance()->getRenderer());
 }
 

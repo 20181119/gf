@@ -14,5 +14,5 @@ class gameobject
 
   protected:
     gameobject(const loadParams* pParams){}
-}
+};
 
