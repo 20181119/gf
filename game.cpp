@@ -5,7 +5,7 @@
 #include "player.h"
 
 
-
+game::game* instance=0;
 
 bool game::init(const char* title, int xpos, int ypos, int height, int width, int flags)
 {

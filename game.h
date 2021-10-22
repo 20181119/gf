@@ -7,11 +7,21 @@
 
 class game
 {
-   public:
+  private:
      game() {}
+     static game* instance;
+
+   public:
+     
      ~game() {}
 
      
+     static game* getinstance()
+     {
+       if(instance==0)
+       instance=new game();
+       return instance;
+     }
      
 
    bool init(const char* title, int xpos, int ypos, int height, int width, int flags);
