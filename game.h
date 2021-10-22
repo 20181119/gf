@@ -4,6 +4,7 @@
 #include "texturemanager.h"
 #include "gameobject.h"
 #include "player.h"
+#include <vector>
 
 class game
 {
@@ -34,6 +35,8 @@ class game
    void handleEvents();
    void update();
    void clean();
+
+   std::vector<gameobject*>m_gameoj;
   
 
    private:

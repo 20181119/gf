@@ -52,8 +52,10 @@ bool game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 void game::update()
 {
-  m_go.update();
-  m_p.update();
+  for(int i=0;i !=m_gameoj.size();i++)
+  {
+    m_gameoj[i]->update();
+  }
 }
 
 void game::render()
