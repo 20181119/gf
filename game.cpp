@@ -33,6 +33,11 @@ bool game::init(const char* title, int xpos, int ypos, int height, int width, in
       {
        return false;
       }
+       if(!texturemanager::instance()->load("Assets/New Piskel.png","alien_run",m_pRenderer))//캐릭터이미지아이디설정
+  {
+    return false;
+  }
+
   }
   else
   {
