@@ -11,7 +11,6 @@ void player::draw()
 
 void player::update()
 {
-   m_x+=1;
    m_currentframe=((SDL_GetTicks()/100)%8);
 }
 
