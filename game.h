@@ -6,6 +6,7 @@
 #include "player.h"
 #include <vector>
 
+
 class game
 {
   private:
@@ -35,6 +36,7 @@ class game
    void handleEvents();
    void update();
    void clean();
+   void quit(){m_bRunning=false;}
 
    std::vector<gameobject*>m_gameoj;
   

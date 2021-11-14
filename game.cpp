@@ -5,6 +5,7 @@
 #include "player.h"
 #include "enemy.h"
 #include "loadParams.h"
+#include "InputHandler.h"
 
 
 game* game::instance=0;
@@ -80,22 +81,12 @@ bool game::running()
 
 void game::handleEvents()
 {
-  SDL_Event event;
-  if(SDL_PollEvent(&event))
-  {
-    switch(event.type)
-    {
-      case SDL_QUIT:
-       m_bRunning=false;
-       break;
-      default:
-       break;
-    }
-  }
+  InputHandler::Instance()->update();
 }
 
 void game::clean()
 {
+  InputHandler::Instance()->clean();
   SDL_DestroyWindow(m_pWindow);
   SDL_DestroyRenderer(m_pRenderer);
   SDL_Quit();
